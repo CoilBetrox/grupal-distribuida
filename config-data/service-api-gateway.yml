@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: service-api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: app-books-route
+          uri: lb://service-app-books
+          predicates:
+            - Path=/authors/**,/books/**

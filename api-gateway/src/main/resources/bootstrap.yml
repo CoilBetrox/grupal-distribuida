@@ -1,6 +1,6 @@
 spring:
   application:
-    name: service-app-books
+    name: service-api-gateway
   cloud:
     config:
       uri: http://localhost:8081

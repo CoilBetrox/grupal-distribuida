@@ -11,6 +11,12 @@ java {
     sourceCompatibility = JavaVersion.VERSION_17
 }
 
+configurations {
+    compileOnly {
+        extendsFrom(configurations.annotationProcessor.get())
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -18,10 +24,19 @@ repositories {
 extra["springCloudVersion"] = "2023.0.0"
 
 dependencies {
+
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.cloud:spring-cloud-starter-config")
+    implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
+    //implementation("org.springframework.cloud:spring-cloud-starter-consul-config")
+    //consul
     implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
-    implementation("org.springframework.cloud:spring-cloud-starter-gateway-mvc")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.security:spring-security-test")
 
 }
 

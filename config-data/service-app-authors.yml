@@ -15,15 +15,14 @@ spring:
 
   cloud:
     gateway:
-      mvc:
-        routes:
-          - id: post-rule
-            uri: ${POST_ROUTE_URI:http://localhost:9091}
-            predicates:
-              - Path=/authors/**
-            filters:
-              - PrefixPath=/api
-              - AddResponseHeader=X-Powered-By,Gateway Service
+      routes:
+        - id: post_rule
+          uri: ${POST_ROUTE_URI:http://localhost:9090}
+          predicates:
+            - Path=/authors/**
+          filters:
+            - PrefixPath=/api
+            - AddResponseHeader=X-Powered-By,Gateway Service
 
 server:
   port: 9090

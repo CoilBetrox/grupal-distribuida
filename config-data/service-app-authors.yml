@@ -18,7 +18,7 @@ spring:
       mvc:
         routes:
           - id: post-rule
-            uri: ${POST_ROUTE_URI:http://localhost:9090}
+            uri: ${POST_ROUTE_URI:http://localhost:9091}
             predicates:
               - Path=/authors/**
             filters:

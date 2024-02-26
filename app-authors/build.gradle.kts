@@ -33,7 +33,7 @@ dependencies {
     //implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
     //implementation("org.springframework.boot:spring-boot-starter-actuator")
 
-    implementation("org.springframework.cloud:spring-cloud-starter-gateway")
+    implementation("org.springframework.cloud:spring-cloud-starter-gateway-mvc")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("org.postgresql:postgresql")

@@ -1,0 +1,12 @@
+server:
+  port: 8081
+
+#Consul
+
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: posts-route
+            uri: ${POST_ROUTE_URI:http://localhost:8081}

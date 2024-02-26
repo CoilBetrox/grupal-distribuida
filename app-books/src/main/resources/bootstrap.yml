@@ -11,3 +11,4 @@ spring:
       port: 8500
       discovery:
         enabled: true
+        instance-id: ${spring.application.name}:${spring.application.instance_id:${random.uuid}}

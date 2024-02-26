@@ -1,3 +1,5 @@
+server:
+  port: 8080
 spring:
   application:
     name: service-api-gateway
@@ -10,4 +12,5 @@ spring:
       host: localhost
       port: 8500
       discovery:
+        prefer-ip-address: false
         enabled: true

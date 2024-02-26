@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-cloud-config-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-cloud-config-server
+  template:
+    metadata:
+      labels:
+        app: spring-cloud-config-server
+    spec:
+      containers:
+        - name: spring-cloud-config-server
+          image: config-service
+          ports:
+            - containerPort: 8081
+          env:
+            - name: SPRING_CLOUD_CONFIG_SERVER_GIT_URI
+              value: "https://github.com/dennisyaj/config-data.git"
+          # Otros parámetros de configuración para tu servidor de configuración
+          volumeMounts:
+            - name: config-volume
+              mountPath: /path/to/local/config
+      volumes:
+        - name: config-volume
+          hostPath:
+            path: /path/to/local/config

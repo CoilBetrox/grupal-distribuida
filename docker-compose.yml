@@ -1,21 +1,21 @@
-#docker-compose up -d
 version: '3'
 services:
   gateway:
     image: app-gateway
     environment:
-
-      - SPRING_CLOUD_CONFIG_URI=http://spring-cloud-config-server:8081 # ajusta según la ubicación de tu servidor de configuración
+      - SPRING_CLOUD_CONFIG_URI=http://spring-cloud-config-server:8081
     ports:
       - "8080:8080"
     # Otros parámetros de configuración para tu gateway
 
   spring-cloud-config-server:
     image: config-service
+    ports:
+      - "8081:8081" # Exponemos el puerto 8081 para que sea accesible desde el host
     environment:
       - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=https://github.com/dennisyaj/config-data.git
     volumes:
-      - /path/to/local/config:/path/to/local/config # monta la ubicación de tu configuración local
+      - /path/to/local/config:/path/to/local/config
     # Otros parámetros de configuración para tu servidor de configuración
 
   consul:
@@ -27,8 +27,7 @@ services:
   app-authors-service:
     image: app-authors
     environment:
-      - SPRING_PROFILES_ACTIVE=dev
-      - SPRING_CLOUD_CONFIG_URI=http://spring-cloud-config-server:8081 # ajusta según la ubicación de tu servidor de configuración
+      - SPRING_CLOUD_CONFIG_URI=http://spring-cloud-config-server:8081
     deploy:
       replicas: 1
     expose:
@@ -41,9 +40,8 @@ services:
   app-books-service:
     image: app-books
     environment:
-      - SPRING_PROFILES_ACTIVE=dev
-      - SPRING_CLOUD_CONFIG_URI=http://spring-cloud-config-server:8081 # ajusta según la ubicación de tu servidor de configuración
-      - APP_AUTHORS_URL=http://gateway/app-authors # ajusta según la ubicación de tu gateway
+      - SPRING_CLOUD_CONFIG_URI=http://spring-cloud-config-server:8081
+      - APP_AUTHORS_URL=http://gateway/app-authors
     deploy:
       replicas: 1
     expose:

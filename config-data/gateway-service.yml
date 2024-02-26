@@ -9,4 +9,9 @@ spring:
       mvc:
         routes:
           - id: posts-route
-            uri: ${POST_ROUTE_URI:http://localhost:8082}
+            uri: ${POST_ROUTE_URI:http://localhost:9090}
+            predicates:
+              - Path=/authors/**
+            filters:
+              - PrefixPath=/api
+              - AddResponseHeader=X-Powered-By, Gateway Service

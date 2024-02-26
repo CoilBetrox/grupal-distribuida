@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8082
 
 #Consul
 
@@ -9,4 +9,4 @@ spring:
       mvc:
         routes:
           - id: posts-route
-            uri: ${POST_ROUTE_URI:http://localhost:8081}
+            uri: ${POST_ROUTE_URI:http://localhost:8082}
